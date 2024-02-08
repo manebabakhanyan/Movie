@@ -8,15 +8,15 @@ export default function Main() {
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API}&page=1`)
             .then(response => response.json())
             .then(data => {
-                const randomMovies = getRandomMovies(data.results, 3);
-                setMovies(randomMovies);
+                const randomMovies = getRandomMovies(data.results, 3)
+                setMovies(randomMovies)
             })
     }, []);
 
     const getRandomMovies = (moviesArray) => {
-        const shuffled = moviesArray.sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, 3);
-    };
+        const movies = moviesArray.sort(() => 0.5 - Math.random());
+        return movies.slice(0, 3);
+    }
 
     return (
         <div className='pr-[90px] pl-[50px] pt-[15px]'>
@@ -30,7 +30,7 @@ export default function Main() {
                 ))}
             </div>
             <h1 className='text-yellow font-bold py-[50px] text-[18px]'>Watch everywhere</h1>
-            <p className='text-white pb-[90px]'>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV without paying more</p>
+            <p className='text-white pb-[95px]'>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV without paying more</p>
         </div>
     );
 }

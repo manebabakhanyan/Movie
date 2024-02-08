@@ -1,4 +1,4 @@
-import Home from "./Components/Home/Home"
+import HomePage from "./Components/Home/HomePage"
 import Form from "./Components/RegistrationForm/RegistrationForm"
 import { Route, Routes } from "react-router-dom"
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <>
       <Form />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
       </Routes>
     </>
   )
