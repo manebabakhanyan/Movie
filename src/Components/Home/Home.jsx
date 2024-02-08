@@ -2,6 +2,7 @@ import React from 'react'
 import Main from './Main/Main'
 import PopularFilms from './Popular Films/PopularFilms'
 import Header from './Header/Header'
+import RatedFilms from './Movie/Rated Films/RatedFilms'
 
 export default function Home() {
     return (
@@ -11,6 +12,7 @@ export default function Home() {
                 <Main />
             </div>
             <PopularFilms />
+            <RatedFilms />
         </div>
     )
 }
