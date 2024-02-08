@@ -7,14 +7,13 @@ export function useMovieContext() {
 }
 
 export function MovieProvider({ children }) {
-    const [currentIndex, setCurrentIndex] = useState('');
-
+    const [currentIndex, setCurrentIndex] = useState(0);
     function forward() {
-        setCurrentIndex(forward => forward - 1);
+        setCurrentIndex(prevIndex => prevIndex - 1);
     };
 
     function backword() {
-        setCurrentIndex(backword => Math.max(backword + 1));
+        setCurrentIndex(prevIndex => Math.max(prevIndex + 1, 0));
     };
 
     return (
