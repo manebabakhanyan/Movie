@@ -14,7 +14,7 @@ export default {
       viaGray:'#383838',
       fromGray:'#383838',
       toGray:'#8A8A8A',
-      yellow:'#fde047'
+      yellow:'#FAFF00'
     }
   },
   plugins: [],
