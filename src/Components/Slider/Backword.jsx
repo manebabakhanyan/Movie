@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Backword({ onClick }) {
+export default function Forward({ onClick }) {
     return (
         <div className='flex items-center cursor-pointer' onClick={onClick}>
-            <img src="Vector (6).png" alt="backword" />
+            <img src="Vector (6).png" alt="backword" className='w-[30px]' />
         </div>
     );
 }

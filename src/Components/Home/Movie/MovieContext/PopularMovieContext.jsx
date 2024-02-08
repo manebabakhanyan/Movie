@@ -6,7 +6,7 @@ export function usePopularMovieContext() {
     return useContext(MovieContext);
 }
 
-export function MovieProvider({ children }) {
+export function PopularMovieProvider({ children }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     function forward() {
         setCurrentIndex(prevIndex => prevIndex - 1);

@@ -25,8 +25,8 @@ export default function RatedFilms() {
     }, []);
 
     function getRandomMovies(moviesArray) {
-        const shuffled = moviesArray.sort(() => 0.5 - Math.random());
-        return shuffled;
+        const movies = moviesArray.sort(() => 0.5 - Math.random());
+        return movies;
     };
 
     useEffect(() => {
