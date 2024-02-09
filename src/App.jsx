@@ -1,13 +1,20 @@
-import Home from "./Components/Home/Home"
+import HomePage from "./Components/Home/HomePage"
+import { PopularMovieProvider } from "./Components/Home/Movie/MovieContext/PopularMovieContext"
+import { RatedMovieProvider } from "./Components/Home/Movie/MovieContext/RatedMovieContext"
 import Form from "./Components/RegistrationForm/RegistrationForm"
 import { Route, Routes } from "react-router-dom"
 function App() {
   return (
     <>
       <Form />
-      <div className='bg-gradient-to-br from-viaGray via-fromGray to-toGray px-[100px]'>
-        <Header />
-      </div>
+
+      <PopularMovieProvider>
+        <RatedMovieProvider>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </RatedMovieProvider>
+      </PopularMovieProvider>
     </>
   )
 }
