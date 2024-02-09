@@ -5,9 +5,9 @@ function App() {
   return (
     <>
       <Form />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <div className='bg-gradient-to-br from-viaGray via-fromGray to-toGray px-[100px]'>
+        <Header />
+      </div>
     </>
   )
 }
