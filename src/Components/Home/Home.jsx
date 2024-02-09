@@ -3,6 +3,7 @@ import Main from './Main/Main'
 import PopularFilms from './Popular Films/PopularFilms'
 import Header from './Header/Header'
 import RatedFilms from './Movie/Rated Films/RatedFilms'
+import Footer from './Footer/Footer'
 
 export default function Home() {
     return (
@@ -13,6 +14,8 @@ export default function Home() {
             </div>
             <PopularFilms />
             <RatedFilms />
+            <Footer />
         </div>
+
     )
 }
