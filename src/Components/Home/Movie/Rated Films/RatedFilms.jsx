@@ -19,9 +19,6 @@ export default function RatedFilms() {
                 const randomMovies = getRandomMovies(data.results);
                 setFilms(randomMovies);
             })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
     }, []);
 
     const handleNext = () => {
