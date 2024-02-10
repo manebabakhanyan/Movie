@@ -1,9 +1,10 @@
-import React from 'react'
-import Main from './Main/Main'
-import PopularFilms from './Popular Films/PopularFilms'
-import Header from './Header/Header'
-import RatedFilms from './Movie/Rated Films/RatedFilms'
-import Footer from './Footer/Footer'
+import React from 'react';
+import Main from './Main/Main';
+import PopularFilms from './Popular Films/PopularFilms';
+import Header from './Header/Header';
+import RatedFilms from './Movie/Rated Films/RatedFilms';
+import Footer from './Footer/Footer';
+import Loading from '../Home/Movie/Loading';
 
 export default function Home() {
     return (
@@ -14,8 +15,8 @@ export default function Home() {
             </div>
             <PopularFilms />
             <RatedFilms />
+            <Loading />
             <Footer />
         </div>
-
-    )
+    );
 }

@@ -1,0 +1,45 @@
+import React, { useState, useEffect } from 'react';
+import Header from './Header';
+import Footer from '../Footer/Footer';
+import FilmDate from '../Movie/FilmDate';
+import FilmTitle from '../Movie/FilmTitle';
+import FilmImages from '../Movie/FilmImages';
+import VoteAverage from '../Movie/FilmVote';
+import HeartIcon from '../../Icon/HeartIcon';
+
+function SearchResults() {
+    const [movies, setMovies] = useState([])
+
+    useEffect(() => {
+        const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26'
+        const searchParams = new URLSearchParams(location.search);
+        const query = searchParams.get('query');
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${query}`)
+            .then(response => response.json())
+            .then(data => setMovies(data.results))
+    }, [location.search]);
+
+    return (
+        <div>
+            <div className="bg-gradient-to-br from-viaGray via-fromGray to-toGray px-[100px]">
+                <Header />
+            </div>
+            <div className='flex flex-wrap pl-[140px] pr-[180px] justify-between'>
+                {movies.map(movie => (
+                    <div className='border border-yellow rounded-[20px] p-[20px] mt-[50px]'>
+                        <FilmImages movie={movie} />
+                        <FilmTitle movie={movie} />
+                        <div className='flex justify-between'>
+                            <FilmDate movie={movie} />
+                            <VoteAverage movie={movie} />
+                            <HeartIcon movie={movie} />
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <Footer />
+        </div>
+    );
+}
+
+export default SearchResults;
