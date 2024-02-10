@@ -15,7 +15,6 @@ export default function Home() {
             </div>
             <PopularFilms />
             <RatedFilms />
-            <Loading />
             <Footer />
         </div>
     );

@@ -13,8 +13,8 @@ export default function Loading() {
 
     return (
         loading && (
-            <div>
-                <img src="https://media.tenor.com/_62bXB8gnzoAAAAi/loading.gif" alt="loading" />
+            <div className='flex justify-center h-[54.7vh] items-center'>
+                <img src="https://media.tenor.com/_62bXB8gnzoAAAAi/loading.gif" alt="loading" className='w-[50px]' />
             </div>
         )
     );
