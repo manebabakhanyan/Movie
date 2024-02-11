@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import HeartIcon from '../../Icon/HeartIcon';
 import Search from './Search';
-import SearchResults from './SearchResult';
-
-const Header = () => {
+export default function Header () {
     return (
         <div className='flex justify-between p-[50px]'>
             <Link to='/'>
@@ -15,13 +13,9 @@ const Header = () => {
                     <HeartIcon />
                 </Link>
 
-                <Routes>
-                    <Route path="/" element={<Search />} />
-                    <Route path="/search" element={<SearchResults />} />
-                </Routes>
+                <Search />
+
             </div>
         </div>
     );
 };
-
-export default Header;

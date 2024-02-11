@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Header from './Header';
-import Footer from '../Footer/Footer';
+// import Header from './Header';
+// import Footer from '../Footer/Footer';
 import FilmDate from '../Movie/FilmDate';
 import FilmTitle from '../Movie/FilmTitle';
 import FilmImages from '../Movie/FilmImages';
@@ -31,9 +31,7 @@ function SearchResults() {
 
     return (
         <div>
-            <div className="bg-gradient-to-br from-viaGray via-fromGray to-toGray px-[100px]">
-                <Header />
-            </div>
+
             {loading ? (
                 <Loading />
             ) : (
@@ -57,7 +55,6 @@ function SearchResults() {
                     )}
                 </div>
             )}
-            <Footer />
         </div>
     );
 }

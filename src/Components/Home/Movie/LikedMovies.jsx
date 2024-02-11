@@ -17,9 +17,9 @@ export default function LikedMovies() {
 
     return (
         <div>
-            <div className="bg-gradient-to-br from-viaGray via-fromGray to-toGray px-[100px]">
+            {/* <div className="bg-gradient-to-br from-viaGray via-fromGray to-toGray px-[100px]">
                 <Header />
-            </div>
+            </div> */}
             <div className='flex justify-evenly pl-[140px] pr-[180px] flex-wrap'>
                 {favouriteFilms.map((movie) => (
                     movie && movie.id && (
@@ -37,7 +37,7 @@ export default function LikedMovies() {
                     )
                 ))}
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }
