@@ -6,10 +6,14 @@ import FilmTitle from './FilmTitle';
 import FilmImages from './FilmImages';
 import FilmDate from './FilmDate';
 import VoteAverage from './FilmVote';
+import DeleteFavouriteFilms from './DeleteFavouriteFilms';
 
 export default function LikedMovies() {
-    const { favouriteFilms } = useFavouriteFilms();
-    const validFavoriteFilms = favouriteFilms.filter(movie => movie);
+    const { favouriteFilms, deleteFilm } = useFavouriteFilms();
+
+    const handleDeleteFilm = (filmId) => {
+        deleteFilm(filmId);
+    };
 
     return (
         <div>
@@ -17,15 +21,20 @@ export default function LikedMovies() {
                 <Header />
             </div>
             <div className='flex justify-evenly pl-[140px] pr-[180px] flex-wrap'>
-                {validFavoriteFilms.map((movie, index) => (
-                    <div key={index} className='border border-yellow rounded-[20px] p-[20px] mt-[50px]'>
-                        <FilmImages movie={movie} />
-                        <FilmTitle movie={movie} />
-                        <div className='flex justify-between'>
-                            <FilmDate movie={movie} />
-                            <VoteAverage movie={movie} />
+                {favouriteFilms.map((movie) => (
+                    movie && movie.id && (
+                        <div key={movie.id} className='border border-yellow rounded-[20px] mt-[50px]'>
+                            <DeleteFavouriteFilms handleClick={() => handleDeleteFilm(movie.id)} />
+                            <div className='p-[20px]'>
+                                <FilmImages movie={movie} />
+                                <FilmTitle movie={movie} />
+                                <div className='flex justify-between'>
+                                    <FilmDate movie={movie} />
+                                    <VoteAverage movie={movie} />
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    )
                 ))}
             </div>
             <Footer />
