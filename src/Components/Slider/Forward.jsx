@@ -1,9 +1,9 @@
 import React from 'react';
-
+import ForwardIcon from '../Icon/Vector (5).png'
 export default function Forward({ onClick }) {
     return (
         <div className='flex items-center cursor-pointer' onClick={onClick}>
-            <img src="Vector (5).png" alt="forward" className='w-[30px]' />
+            <img src={ForwardIcon} alt="forward" className='h-[23px]' />
         </div>
     );
 }

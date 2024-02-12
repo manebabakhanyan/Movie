@@ -5,7 +5,7 @@ import FilmDate from '../FilmDate';
 import VoteAverage from '../FilmVote';
 import HeartIcon from '../../../Icon/HeartIcon';
 import Forward from '../../../Slider/Forward';
-import Backword from '../../../Slider/Backword';
+import Backward from '../../../Slider/Backward';
 
 export default function RatedFilms() {
     const [films, setFilms] = useState([]);
@@ -22,11 +22,11 @@ export default function RatedFilms() {
     }, []);
 
     const handleNext = () => {
-        setStartIndex(prevIndex => Math.min(prevIndex + 4, films.length - 4));
+        setStartIndex(prevIndex => Math.min(prevIndex + 1, films.length - 4));
     };
 
     const handlePrev = () => {
-        setStartIndex(prevIndex => Math.max(prevIndex - 4, 0));
+        setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
     };
 
     function getRandomMovies(moviesArray) {
@@ -50,7 +50,7 @@ export default function RatedFilms() {
                         </div>
                     </div>
                 ))}
-                <Backword onClick={handleNext} />
+                <Backward onClick={handleNext} />
             </div>
         </div>
     );
