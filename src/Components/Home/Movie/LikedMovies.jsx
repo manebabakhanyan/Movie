@@ -1,7 +1,5 @@
 import React from 'react';
 import useFavouriteFilms from '../../../Store/useFavouriteFilms';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import FilmTitle from './FilmTitle';
 import FilmImages from './FilmImages';
 import FilmDate from './FilmDate';
@@ -17,9 +15,6 @@ export default function LikedMovies() {
 
     return (
         <div>
-            {/* <div className="bg-gradient-to-br from-viaGray via-fromGray to-toGray px-[100px]">
-                <Header />
-            </div> */}
             <div className='flex justify-evenly pl-[140px] pr-[180px] flex-wrap'>
                 {favouriteFilms.map((movie) => (
                     movie && movie.id && (
@@ -37,7 +32,6 @@ export default function LikedMovies() {
                     )
                 ))}
             </div>
-            {/* <Footer /> */}
         </div>
     );
 }
