@@ -8,6 +8,7 @@ import Header from './Components/Home/Header/Header';
 import Main from './Components/Home/Main/Main';
 import MovieDetails from './Components/Information/InformationMovie';
 import Footer from './Components/Home/Footer/Footer';
+import SimilarFilms from './Components/Home/Movie/SimilarFilms';
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<SearchResults />} />
         <Route path="/favourite" element={<LikedMovies />} />
+        <Route path='/movie/:id' element={<SimilarFilms />} />
       </Routes>
       <div>
         <Footer />

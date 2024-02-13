@@ -21,12 +21,15 @@ const VideoComponent = ({ movieId }) => {
     }, [movieId]);
 
     return (
-        <div className='flex justify-between ml-[50px] mr-[100px] pt-[80px] pb-[80px]'>
-            {videos.slice(0, 4).map(video => (
-                <div key={video.id} className="videoContainer">
-                    <iframe src={`https://www.youtube.com/embed/${video.key}`} className='w-[250px] rounded-[20px]'></iframe>
-                </div>
-            ))}
+        <div className='pt-[25px]'>
+            <h1 className='font-bold text-white text-center text-[30px]'>Trailers</h1>
+            <div className='flex justify-between ml-[50px] mr-[100px] pt-[25px] pb-[80px]'>
+                {videos.slice(0, 4).map(video => (
+                    <div key={video.id} className="videoContainer">
+                        <iframe src={`https://www.youtube.com/embed/${video.key}`} className='w-[250px] rounded-[20px]'></iframe>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
