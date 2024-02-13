@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
+import { memo } from 'react';
 const API_KEY = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
 
-const VideoComponent = ({ movieId }) => {
+export default memo(function VideoComponent({ movieId }) {
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
@@ -33,6 +33,4 @@ const VideoComponent = ({ movieId }) => {
             </div>
         </div>
     );
-};
-
-export default VideoComponent;
+})
