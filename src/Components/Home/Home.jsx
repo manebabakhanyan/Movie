@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PopularFilms from './Popular Films/PopularFilms';
 import RatedFilms from './Movie/Rated Films/RatedFilms';
-
-export default function Home() {
+import { memo } from 'react';
+export default memo(function Home() {
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     const handleSelectMovie = (movieId) => {
@@ -14,4 +14,4 @@ export default function Home() {
             <RatedFilms />
         </div>
     );
-}
+})

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import FilmImages from '../Movie/FilmImages';
 import FilmTitle from '../Movie/FilmTitle';
 import FilmDate from '../Movie/FilmDate';
@@ -13,6 +13,7 @@ function SimilarMovies({ selectedMovie }) {
     const [similarMovies, setSimilarMovies] = useState([]);
     const [startIndex, setStartIndex] = useState(0);
     const selectMovie = useMovieStore((state) => state.selectMovie);
+
     useEffect(() => {
         const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${selectedMovie.title}`)
@@ -23,28 +24,39 @@ function SimilarMovies({ selectedMovie }) {
                 setSimilarMovies(randomMovies);
             });
     }, [selectedMovie]);
-    function handleMovieClick (movie) {
+
+    const handleMovieClick = useCallback((movie) => {
         selectMovie(movie);
-    };
-    function handleNext() {
+    }, [selectMovie]);
+
+    const handleNext = useCallback(() => {
         setStartIndex(prevIndex => Math.min(prevIndex + 1, similarMovies.length - 4));
-    };
+    }, [similarMovies.length]);
 
-    function handlePrev () {
+    const handlePrev = useCallback(() => {
         setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
+    }, []);
+
+    function getRandomMovies(array) {
+        const movies = [];
+        const changed = [...array];
+
+        for (let i = 0; changed.length > 0; i++) {
+            const randomIndex = Math.floor(Math.random() * changed.length);
+            movies.push(changed.splice(randomIndex, 1)[0]);
+        }
+
+        return movies;
     };
 
-    function getRandomMovies(moviesArray) {
-        const movies = moviesArray.sort(() => 0.5 - Math.random());
-        return movies;
-    }
+    const randomMovies = useMemo(() => getRandomMovies(similarMovies), [similarMovies]);
 
     return (
         <div>
             <h2 className='text-center font-bold text-[35px] py-[50px]'>Similar Movies</h2>
             <div className='flex justify-between px-[100px] pb-[20px]'>
                 <Forward onClick={handlePrev} />
-                {similarMovies.slice(startIndex, startIndex + 4).map((movie, index) => (
+                {randomMovies.slice(startIndex, startIndex + 4).map((movie, index) => (
                     <div key={movie.id}>
                         <div key={index} className='border border-yellow p-[25px] rounded-[20px]'>
                             <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>

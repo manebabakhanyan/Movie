@@ -1,6 +1,7 @@
 import useMovieStore from '../../../Store/useMovieStore';
 import SimilarMovies from './SimilarMovies';
-function SimilarFilms() {
+import { memo } from 'react';
+export default memo(function SimilarFilms() {
     const selectedMovie = useMovieStore((state) => state.selectedMovie);
 
     return (
@@ -12,6 +13,4 @@ function SimilarFilms() {
         </div>
 
     );
-}
-
-export default SimilarFilms;
+})

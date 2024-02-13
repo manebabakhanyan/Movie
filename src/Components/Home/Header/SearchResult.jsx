@@ -27,13 +27,13 @@ function SearchResults() {
                 .then(data => {
                     setMovies(data.results);
                     setLoading(false);
-                    searchValue(search);
+                    setSearchValue(search);
                 })
         }, 2000);
         return () => clearTimeout(timer);
     }, [location.search]);
 
-    const handleMovieClick = (movie) => {
+    function handleMovieClick(movie) {
         selectMovie(movie);
     };
 

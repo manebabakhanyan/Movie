@@ -8,20 +8,20 @@ import Forward from '../../Slider/Forward';
 import Backward from '../../Slider/Backward';
 import { Link } from 'react-router-dom';
 import useMovieStore from '../../../Store/useMovieStore';
-
-function PopularFilms() {
+import { memo } from 'react';
+export default memo(function PopularFilms() {
     const [films, setFilms] = useState([]);
     const [startIndex, setStartIndex] = useState(0);
     useEffect(() => {
-        
-            const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
-            fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API}&page=1`)
-                .then(response => response.json())
-                .then(data => {
-                    const randomMovies = getRandomMovies(data.results);
-                    setFilms(randomMovies);
-                })
-        
+
+        const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API}&page=1`)
+            .then(response => response.json())
+            .then(data => {
+                const randomMovies = getRandomMovies(data.results);
+                setFilms(randomMovies);
+            })
+
     }, []);
 
     const selectMovie = useMovieStore((state) => state.selectMovie);
@@ -37,11 +37,17 @@ function PopularFilms() {
         setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
     };
 
-    function getRandomMovies(moviesArray) {
-        const movies = moviesArray.sort(() => 0.5 - Math.random());
-        return movies;
-    }
+    function getRandomMovies(array) {
+        const movies = [];
+        const changed = [...array];
 
+        for (let i = 0; changed.length > 0; i++) {
+            const randomIndex = Math.floor(Math.random() * changed.length);
+            movies.push(changed.splice(randomIndex, 1)[0]);
+        }
+
+        return movies;
+    };
     return (
         <div>
             <h1 className='text-center font-bold text-[35px] py-[50px]'>Most popular films</h1>
@@ -66,6 +72,4 @@ function PopularFilms() {
             </div>
         </div>
     );
-}
-
-export default PopularFilms;
+})

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ActorImage from './ActorImage';
 import Forward from '../../Slider/Forward';
 import Backward from '../../Slider/Backward';
-
-function FilmActors({ movie }) {
+import { memo } from 'react';
+export default memo(function FilmActors({ movie }) {
     const [actorImages, setActorImages] = useState([]);
     const [startIndex, setStartIndex] = useState(0);
     const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
@@ -29,13 +29,13 @@ function FilmActors({ movie }) {
         fetchActorImages();
     }, [movie, API]);
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
         setStartIndex(prevIndex => Math.min(prevIndex + 1, actorImages.length - 5));
-    };
+    })
 
-    const handlePrev = () => {
+    const handlePrev = useCallback(() => {
         setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
-    };
+    })
 
     return (
         <div>
@@ -48,6 +48,4 @@ function FilmActors({ movie }) {
             </div>
         </div>
     );
-}
-
-export default FilmActors;
+})

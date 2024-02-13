@@ -16,7 +16,8 @@ export default {
       toGray:'#8A8A8A',
       yellow:'#FAFF00',
       red:'#ff0000',
-      darkGrey:'#383838'
+      darkGrey:'#383838',
+      black:'#000'
     }
   },
   plugins: [],

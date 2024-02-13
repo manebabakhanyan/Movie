@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LoginForm from './Form';
-
+import { useMemo } from 'react';
 export default function RegisterPage() {
     const [submit, setSubmit] = useState(false);
 
@@ -20,6 +20,9 @@ export default function RegisterPage() {
             localStorage.setItem('submit', 'true');
         }
     };
+    const formSubmit = useMemo(() => {
+        return <LoginForm onSubmit={handleFormSubmit} />;
+    }, []);
 
     if (submit) {
         return null;
@@ -31,7 +34,7 @@ export default function RegisterPage() {
                 <div className="pl-[500px] pr-[500px] pt-[170px]">
                     <fieldset className='border border-white pb-[60px] pt-[60px] shadow-xl shadow-white bg-gray'>
                         <legend className='ml-[90px] text-white text-[20px] font-bold'>Log In</legend>
-                        <LoginForm onSubmit={handleFormSubmit} />
+                        {formSubmit}
                     </fieldset>
                 </div>
             </div>

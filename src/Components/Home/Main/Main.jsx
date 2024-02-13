@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 export default function Main() {
     const [movies, setMovies] = useState([]);
@@ -8,20 +8,23 @@ export default function Main() {
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API}&page=1`)
             .then(response => response.json())
             .then(data => {
-                const randomMovies = getRandomMovies(data.results, 3)
-                setMovies(randomMovies)
-            })
+                setMovies(data.results);
+            });
     }, []);
 
-    const getRandomMovies = (moviesArray) => {
-        const movies = moviesArray.sort(() => 0.5 - Math.random());
-        return movies.slice(0, 3);
-    }
+    const getRandomMovies = useMemo(() => {
+        return (moviesArray) => {
+            const movies = moviesArray.sort(() => 0.5 - Math.random());
+            return movies.slice(0, 3);
+        };
+    }, []);
+
+    const randomMovies = useMemo(() => getRandomMovies(movies), [getRandomMovies, movies]);
 
     return (
         <div className='pr-[90px] pl-[50px] pt-[15px]'>
             <div className='flex justify-between'>
-                {movies.map((movie, i) => (
+                {randomMovies.map((movie, i) => (
                     <div key={i}>
                         {movie.poster_path && (
                             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className='w-[290px] h-[330px] rounded-[20px] object-cover' />
@@ -34,4 +37,3 @@ export default function Main() {
         </div>
     );
 }
-

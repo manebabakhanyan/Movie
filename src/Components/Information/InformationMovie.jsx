@@ -6,8 +6,8 @@ import FilmDate from '../Home/Movie/FilmDate';
 import VoteAverage from '../Home/Movie/FilmVote';
 import FilmActors from '../Home/Movie/FilmActors';
 import VideoComponent from '../Home/Movie/MovieVideo';
-
-function MovieDetails() {
+import { memo } from 'react';
+export default memo(function MovieDetails() {
     const selectedMovie = useMovieStore((state) => state.selectedMovie);
 
     return (
@@ -35,11 +35,10 @@ function MovieDetails() {
                         </div>
                     </div>
                 </div>
-                <VideoComponent movieId={selectedMovie?.id} />
+                <VideoComponent movieId={selectedMovie.id} />
             </div>
 
         </div>
     );
-}
+})
 
-export default MovieDetails;
