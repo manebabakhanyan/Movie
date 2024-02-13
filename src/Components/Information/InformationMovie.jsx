@@ -6,53 +6,38 @@ import FilmDate from '../Home/Movie/FilmDate';
 import VoteAverage from '../Home/Movie/FilmVote';
 import FilmActors from '../Home/Movie/FilmActors';
 import VideoComponent from '../Home/Movie/MovieVideo';
-import Loading from '../Home/Movie/Loading';
 
 function MovieDetails() {
     const selectedMovie = useMovieStore((state) => state.selectedMovie);
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        if (selectedMovie) {
-            setLoading(true);
-            setTimeout(() => {
-                setLoading(false);
-            }, 2000);
-        }
-    }, [selectedMovie]);
 
     return (
         <div>
-            {loading ? (
-                <div>
-                    <Loading />
-                </div>
-            ) : (
-                <div>
-                    <div className="flex">
-                        <div className="ml-[50px]">
-                            <FilmImages movie={selectedMovie} />
+
+            <div>
+                <div className="flex">
+                    <div className="ml-[50px]">
+                        <FilmImages movie={selectedMovie} />
+                    </div>
+                    <div className='pl-[200px]'>
+                        <div className='text-yellow mb-[30px]'>
+                            <FilmTitle movie={selectedMovie} />
                         </div>
-                        <div className='pl-[200px]'>
-                            <div className='text-yellow mb-[30px]'>
-                                <FilmTitle movie={selectedMovie} />
+                        <div className='text-white'>
+                            <div className='mb-[30px]'>
+                                <FilmDate movie={selectedMovie} />
                             </div>
-                            <div className='text-white'>
-                                <div className='mb-[30px]'>
-                                    <FilmDate movie={selectedMovie} />
-                                </div>
-                                <div className='mb-[30px]'>
-                                    <VoteAverage movie={selectedMovie} />
-                                </div>
-                                <div className='mb-[30px] flex gap-[10px]'>
-                                    <FilmActors movie={selectedMovie} />
-                                </div>
+                            <div className='mb-[30px]'>
+                                <VoteAverage movie={selectedMovie} />
+                            </div>
+                            <div className='mb-[30px] flex gap-[10px]'>
+                                <FilmActors movie={selectedMovie} />
                             </div>
                         </div>
                     </div>
-                    <VideoComponent movieId={selectedMovie.id} />
                 </div>
-            )}
+                <VideoComponent movieId={selectedMovie?.id} />
+            </div>
+
         </div>
     );
 }

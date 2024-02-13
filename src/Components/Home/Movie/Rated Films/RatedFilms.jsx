@@ -6,10 +6,13 @@ import VoteAverage from '../FilmVote';
 import HeartIcon from '../../../Icon/HeartIcon';
 import Forward from '../../../Slider/Forward';
 import Backward from '../../../Slider/Backward';
+import { Link } from 'react-router-dom';
+import useMovieStore from '../../../../Store/useMovieStore';
 
 export default function RatedFilms() {
     const [films, setFilms] = useState([]);
     const [startIndex, setStartIndex] = useState(0);
+    const selectMovie = useMovieStore((state) => state.selectMovie);
 
     useEffect(() => {
         const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
@@ -18,15 +21,19 @@ export default function RatedFilms() {
             .then(data => {
                 const randomMovies = getRandomMovies(data.results);
                 setFilms(randomMovies);
-            })
+            });
     }, []);
 
-    const handleNext = () => {
+    function handleNext() {
         setStartIndex(prevIndex => Math.min(prevIndex + 1, films.length - 4));
     };
 
-    const handlePrev = () => {
+    function handlePrev() {
         setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
+    };
+
+    function handleMovieClick (movie) {
+        selectMovie(movie);
     };
 
     function getRandomMovies(moviesArray) {
@@ -41,8 +48,10 @@ export default function RatedFilms() {
                 <Forward onClick={handlePrev} />
                 {films.slice(startIndex, startIndex + 4).map((movie, i) => (
                     <div key={i} className='border border-yellow p-[25px] rounded-[20px]'>
-                        <FilmImages movie={movie} />
-                        <FilmTitle movie={movie} />
+                        <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
+                            <FilmImages movie={movie} />
+                            <FilmTitle movie={movie} />
+                        </Link>
                         <div className='pt-[10px] flex justify-between mr-[15px]'>
                             <FilmDate movie={movie} />
                             <VoteAverage movie={movie} />

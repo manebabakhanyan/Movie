@@ -6,15 +6,16 @@ const VideoComponent = ({ movieId }) => {
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
-        const fetchVideos = async () => {
-
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`);
-
-            const data = await response.json();
-            if (data.results && data.results.length > 0) {
-                setVideos(data.results);
-            }
-
+        const fetchVideos = () => {
+            fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.results && data.results.length > 0) {
+                        setVideos(data.results);
+                    }
+                })
         };
 
         fetchVideos();
@@ -35,3 +36,6 @@ const VideoComponent = ({ movieId }) => {
 };
 
 export default VideoComponent;
+
+
+

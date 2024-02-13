@@ -11,7 +11,6 @@ import useMovieStore from '../../../Store/useMovieStore';
 
 function PopularFilms() {
     const [films, setFilms] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [startIndex, setStartIndex] = useState(0);
     useEffect(() => {
         
