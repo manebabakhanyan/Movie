@@ -9,7 +9,6 @@ import Main from './Components/Home/Main/Main';
 import MovieDetails from './Components/Information/InformationMovie';
 import Footer from './Components/Home/Footer/Footer';
 import SimilarFilms from './Components/Home/Movie/SimilarFilms';
-
 function App() {
   return (
     <>
