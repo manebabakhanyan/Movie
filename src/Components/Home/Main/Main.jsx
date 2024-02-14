@@ -35,7 +35,7 @@ export default function Main() {
                             <img
                                 src={`https://image.tmdb.org/t/p/${index === 0 ? 'w500' : 'w300'}${movie.poster_path}`}
                                 alt={movie.title}
-                                className='h-[350px] rounded-[20px] object-cover'
+                                className='h-[350px] rounded-[20px] object-cover md800:h-[230px] md1000:h-[270px] md880:h-[250px] md700:h-[220px] md700:w-[350px] md1200:h-[350px] md600:h-[200px] md550:h-[180px]'
                                 style={{ width: `${index === 0 ? '500px' : '290px'}` }}
                             />
                         )}

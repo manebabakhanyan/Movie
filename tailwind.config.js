@@ -21,10 +21,13 @@ module.exports = {
       black: '#000'
     },
     screens: {
+      'md1200': '1200px',
+      'md1000': '1000px',
+      'md880': '880px',
       'md800': '800px',
-      'md550': '550px',
-      'md600': '600px',
       'md700': '700px',
+      'md600': '600px',
+      'md550': '550px',
     }
   },
   plugins: [],
