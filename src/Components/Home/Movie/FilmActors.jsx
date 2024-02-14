@@ -40,15 +40,11 @@ export default memo(function FilmActors({ movie }) {
     return (
         <div>
             <div className='flex justify-between gap-[10px] pb-[20px]'>
-                <div className="md550:object-cover">
-                    <Forward onClick={handlePrev} />
-                </div>
+                <Forward onClick={handlePrev} />
                 {actorImages.slice(startIndex, startIndex + 5).map((imagePath, index) => (
                     <ActorImage key={index} imagePath={imagePath} />
                 ))}
-                <div className="md550:object-cover">
-                    <Backward onClick={handleNext} />
-                </div>
+                <Backward onClick={handleNext} />
             </div>
         </div>
     );
