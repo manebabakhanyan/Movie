@@ -25,7 +25,7 @@ export default memo(function RatedFilms() {
             });
     }, []);
 
-    const memoizedFilms = useMemo(() => films.slice(startIndex, startIndex + 4), [films, startIndex]);
+    const rateds = useMemo(() => films.slice(startIndex, startIndex + 4), [films, startIndex]);
 
     function handleNext() {
         setStartIndex(prevIndex => Math.min(prevIndex + 1, films.length - 4));
@@ -56,7 +56,7 @@ export default memo(function RatedFilms() {
             <h1 className='text-center font-bold text-[35px] py-[50px]'>Top Rated Films</h1>
             <div className='flex justify-between px-[100px] pb-[20px]'>
                 <Forward onClick={handlePrev} />
-                {memoizedFilms.map((movie, i) => (
+                {rateds.map((movie, i) => (
                     <div key={i} className='border border-yellow p-[25px] rounded-[20px]'>
                         <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
                             <FilmImages movie={movie} />

@@ -26,14 +26,14 @@ export default memo(function PopularFilms() {
 
     const selectMovie = useMovieStore((state) => state.selectMovie);
 
-    const handleMovieClick = (movie) => {
+    function handleMovieClick(movie) {
         selectMovie(movie);
     };
-    const handleNext = () => {
+    function handleNext() {
         setStartIndex(prevIndex => Math.min(prevIndex + 1, films.length - 4));
     };
 
-    const handlePrev = () => {
+    function handlePrev() {
         setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
     };
 
