@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useMovieStore from '../../Store/useMovieStore';
 import FilmImages from '../Home/Movie/FilmImages';
 import FilmTitle from '../Home/Movie/FilmTitle';
@@ -15,7 +15,7 @@ export default memo(function MovieDetails() {
 
             <div>
                 <div className="flex">
-                    <div className="ml-[50px]">
+                    <div className="ml-[50px] md800:h-[300px]">
                         <FilmImages movie={selectedMovie} />
                     </div>
                     <div className='pl-[200px]'>

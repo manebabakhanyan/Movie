@@ -51,7 +51,7 @@ export default memo(function PopularFilms() {
     return (
         <div>
             <h1 className='text-center font-bold text-[35px] py-[50px] '>Most popular films</h1>
-            <div className='flex justify-between px-[100px] pb-[20px] md550:flex-col md600:flex-row md600:flex-wrap '>
+            <div className='flex justify-between px-[100px] pb-[20px] md550:flex-col md600:flex-row md600:flex-wrap md800:flex-row md800:flex-wrap md700:flex-nowrap md700:flex-col md1200:flex-nowrap'>
                 <div className='md1000:ml-[-20px] md1200:flex'>
                     <Forward onClick={handlePrev} />
                 </div>
