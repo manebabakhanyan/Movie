@@ -37,9 +37,9 @@ export default memo(function PopularFilms() {
         setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
     };
 
-    function getRandomMovies(array) {
+    function getRandomMovies(arr) {
         const movies = [];
-        const changed = [...array];
+        const changed = [...arr];
 
         for (let i = 0; changed.length > 0; i++) {
             const randomIndex = Math.floor(Math.random() * changed.length);
