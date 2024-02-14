@@ -53,18 +53,16 @@ export default memo(function PopularFilms() {
             <h1 className='text-center font-bold text-[35px] py-[50px]'>Most popular films</h1>
             <div className='flex justify-between px-[100px] pb-[20px]'>
                 <Forward onClick={handlePrev} />
-                {films.slice(startIndex, startIndex + 4).map((movie, index) => (
-                    <div key={movie.id}>
-                        <div key={index} className='border border-yellow p-[25px] rounded-[20px]'>
-                            <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
-                                <FilmImages movie={movie} />
-                                <FilmTitle movie={movie} />
-                            </Link>
-                            <div className='pt-[10px] flex justify-between mr-[15px]'>
-                                <FilmDate movie={movie} />
-                                <VoteAverage movie={movie} />
-                                <HeartIcon movie={movie} />
-                            </div>
+                {films.slice(startIndex, startIndex + 4).map((movie) => (
+                    <div key={movie.id} className='border border-yellow p-[25px] rounded-[20px]'>
+                        <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
+                            <FilmImages movie={movie} />
+                            <FilmTitle movie={movie} />
+                        </Link>
+                        <div className='pt-[10px] flex justify-between mr-[15px]'>
+                            <FilmDate movie={movie} />
+                            <VoteAverage movie={movie} />
+                            <HeartIcon movie={movie} />
                         </div>
                     </div>
                 ))}
