@@ -54,8 +54,10 @@ function SimilarMovies({ selectedMovie }) {
     return (
         <div>
             <h2 className='text-center font-bold text-[35px] py-[50px]'>Similar Movies</h2>
-            <div className='flex justify-between px-[100px] pb-[20px]'>
-                <Forward onClick={handlePrev} />
+            <div className='flex justify-between px-[100px] pb-[20px] md550:flex-col md600:flex-row md600:flex-wrap md800:flex-row md800:flex-wrap md700:flex-nowrap md700:flex-col md1200:flex-nowrap'>
+                <div className='md1000:ml-[-20px] md1200:flex'>
+                    <Forward onClick={handlePrev} />
+                </div>
                 {randomMovies.slice(startIndex, startIndex + 4).map((movie, index) => (
                     <div key={index} className='border border-yellow p-[25px] rounded-[20px]'>
                         <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
@@ -69,7 +71,9 @@ function SimilarMovies({ selectedMovie }) {
                         </div>
                     </div>
                 ))}
-                <Backward onClick={handleNext} />
+                <div className='md1200:flex'>
+                    <Backward onClick={handleNext} />
+                </div>
             </div>
         </div>
     );
