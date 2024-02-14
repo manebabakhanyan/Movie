@@ -22,7 +22,7 @@ function SimilarMovies({ selectedMovie }) {
                 const filteredMovies = data.results.filter(movie => movie.id !== selectedMovie.id);
                 const randomMovies = getRandomMovies(filteredMovies);
                 setSimilarMovies(randomMovies);
-            });
+            })
     }, [selectedMovie]);
 
     const handleMovieClick = useCallback((movie) => {
@@ -57,17 +57,15 @@ function SimilarMovies({ selectedMovie }) {
             <div className='flex justify-between px-[100px] pb-[20px]'>
                 <Forward onClick={handlePrev} />
                 {randomMovies.slice(startIndex, startIndex + 4).map((movie, index) => (
-                    <div key={movie.id}>
-                        <div key={index} className='border border-yellow p-[25px] rounded-[20px]'>
-                            <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
-                                <FilmImages movie={movie} />
-                                <FilmTitle movie={movie} />
-                            </Link>
-                            <div className='pt-[10px] flex justify-between mr-[15px]'>
-                                <FilmDate movie={movie} />
-                                <VoteAverage movie={movie} />
-                                <HeartIcon movie={movie} />
-                            </div>
+                    <div key={index} className='border border-yellow p-[25px] rounded-[20px]'>
+                        <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
+                            <FilmImages movie={movie} />
+                            <FilmTitle movie={movie} />
+                        </Link>
+                        <div className='pt-[10px] flex justify-between mr-[15px]'>
+                            <FilmDate movie={movie} />
+                            <VoteAverage movie={movie} />
+                            <HeartIcon movie={movie} />
                         </div>
                     </div>
                 ))}
