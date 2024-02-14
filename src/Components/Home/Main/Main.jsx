@@ -12,22 +12,32 @@ export default function Main() {
             });
     }, []);
 
-    const getRandomMovies = useMemo(() => {
-        return (moviesArray) => {
-            const movies = moviesArray.sort(() => 0.5 - Math.random());
-            return movies.slice(0, 3);
-        };
-    }, []);
+    function getRandomMovies(arr, num) {
+        const movies = [];
+        const changed = [...arr];
 
-    const randomMovies = useMemo(() => getRandomMovies(movies), [getRandomMovies, movies]);
+        for (let i = 0; i < num && changed.length > 0; i++) {
+            const randomIndex = Math.floor(Math.random() * changed.length);
+            movies.push(changed.splice(randomIndex, 1)[0]);
+        }
+
+        return movies;
+    };
+
+    const randomMovies = useMemo(() => getRandomMovies(movies, 3), [movies]);
 
     return (
         <div className='pr-[90px] pl-[50px] pt-[15px]'>
             <div className='flex justify-between'>
-                {randomMovies.map((movie, i) => (
-                    <div key={i}>
+                {randomMovies.map((movie, index) => (
+                    <div key={index} className='flex justify-between'>
                         {movie.poster_path && (
-                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className='w-[290px] h-[330px] rounded-[20px] object-cover' />
+                            <img
+                                src={`https://image.tmdb.org/t/p/${index === 0 ? 'w500' : 'w300'}${movie.poster_path}`}
+                                alt={movie.title}
+                                className='h-[350px] rounded-[20px] object-cover'
+                                style={{ width: `${index === 0 ? '500px' : '290px'}` }}
+                            />
                         )}
                     </div>
                 ))}
