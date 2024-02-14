@@ -50,9 +50,11 @@ export default memo(function PopularFilms() {
     };
     return (
         <div>
-            <h1 className='text-center font-bold text-[35px] py-[50px]'>Most popular films</h1>
-            <div className='flex justify-between px-[100px] pb-[20px]'>
-                <Forward onClick={handlePrev} />
+            <h1 className='text-center font-bold text-[35px] py-[50px] '>Most popular films</h1>
+            <div className='flex justify-between px-[100px] pb-[20px] md550:flex-col md600:flex-row md600:flex-wrap '>
+                <div className='md1000:ml-[-20px] md1200:flex'>
+                    <Forward onClick={handlePrev} />
+                </div>
                 {films.slice(startIndex, startIndex + 4).map((movie) => (
                     <div key={movie.id} className='border border-yellow p-[25px] rounded-[20px]'>
                         <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
@@ -66,7 +68,9 @@ export default memo(function PopularFilms() {
                         </div>
                     </div>
                 ))}
-                <Backward onClick={handleNext} />
+                <div className='md1200:flex'>
+                    <Backward onClick={handleNext} />
+                </div>
             </div>
         </div>
     );
