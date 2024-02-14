@@ -27,7 +27,7 @@ export default function Main() {
     const randomMovies = useMemo(() => getRandomMovies(movies, 3), [movies]);
 
     return (
-        <div className='pr-[90px] pl-[50px] pt-[15px]'>
+        <div className='pr-[30px] pl-[50px] pt-[15px]'>
             <div className='flex justify-between'>
                 {randomMovies.map((movie, index) => (
                     <div key={index} className='flex justify-between'>
