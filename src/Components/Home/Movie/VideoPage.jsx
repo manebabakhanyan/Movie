@@ -6,10 +6,14 @@ const VideoPage = () => {
 
     return (
         <div>
-            <iframe
-                src={`https://www.youtube.com/embed/${videoId}`}
-                
-            ></iframe>
+            <div className="flex justify-center pt-[50px]">
+                <iframe
+                    title="Video"
+                    src={`https://www.youtube.com/embed/${videoId}`}
+                    className='w-[700px] h-[359px]'
+                    allowFullScreen
+                ></iframe>
+            </div>
         </div>
     );
 };

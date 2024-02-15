@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SearchResults from './Components/Home/Header/SearchResult';
 import LikedMovies from './Components/Home/Movie/LikedMovies';
@@ -8,6 +8,8 @@ import Main from './Components/Home/Main/Main';
 import MovieDetails from './Components/Information/InformationMovie';
 import Footer from './Components/Home/Footer/Footer';
 import SimilarFilms from './Components/Home/Movie/SimilarFilms';
+import VideoPage from './Components/Home/Movie/VideoPage';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('submit'));
 
@@ -33,6 +35,7 @@ function App() {
             <Route path="/search" element={<SearchResults />} />
             <Route path="/favourite" element={<LikedMovies />} />
             <Route path='/movie/:id' element={<SimilarFilms />} />
+            <Route path="/video/:videoId" element={<VideoPage />} />
           </Routes>
         </div>
       )}
@@ -42,7 +45,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
