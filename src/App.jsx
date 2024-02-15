@@ -9,7 +9,7 @@ import MovieDetails from './Components/Information/InformationMovie';
 import Footer from './Components/Home/Footer/Footer';
 import SimilarFilms from './Components/Home/Movie/SimilarFilms';
 import VideoPage from './Pages/VideoPage';
-
+import RegisterPage from './Pages/RegisterPage';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('submit'));
 
