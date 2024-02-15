@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PopularFilms from './Popular Films/PopularFilms';
-import RatedFilms from './Movie/Rated Films/RatedFilms';
+import PopularFilms from '../Components/Home/Popular Films/PopularFilms';
+import RatedFilms from '../Components/Home/Movie/Rated Films/RatedFilms';
 import { memo } from 'react';
 export default memo(function Home() {
     const [selectedMovie, setSelectedMovie] = useState(null);
