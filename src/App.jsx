@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SearchResults from './Pages/SearchResults';
-import LikedMovies from './Components/Home/Movie/LikedMovies';
+import LikedMovies from './Pages/LikedMovies';
 import Home from './Components/Home/Home';
 import Header from './Components/Home/Header/Header';
 import Main from './Components/Home/Main/Main';

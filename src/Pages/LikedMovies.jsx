@@ -1,19 +1,19 @@
-import React, { useMemo } from 'react';
-import useFavouriteFilms from '../../../Store/useFavouriteFilms';
-import FilmTitle from './FilmTitle';
-import FilmImages from './FilmImages';
-import FilmDate from './FilmDate';
-import VoteAverage from './FilmVote';
-import DeleteFavouriteFilms from './DeleteFavouriteFilms';
+import React, { memo, useMemo } from 'react';
+import useFavouriteFilms from '../Store/useFavouriteFilms';
+import FilmTitle from '../Components/Home/Movie/FilmTitle';
+import FilmImages from '../Components/Home/Movie/FilmImages';
+import FilmDate from '../Components/Home/Movie/FilmDate';
+import VoteAverage from '../Components/Home/Movie/FilmVote';
+import DeleteFavouriteFilms from '../Components/Home/Movie/DeleteFavouriteFilms';
 
-const LikedMovies = () => {
+export default memo(function LikedMovies() {
     const { favouriteFilms, deleteFilm } = useFavouriteFilms();
 
     const favFilm = useMemo(() => {
         return favouriteFilms.filter(movie => movie && movie.id);
     }, [favouriteFilms]);
 
-    const handleDeleteFilm = (filmId) => {
+    function handleDeleteFilm(filmId) {
         deleteFilm(filmId);
     };
 
@@ -36,6 +36,4 @@ const LikedMovies = () => {
             </div>
         </div>
     );
-}
-
-export default React.memo(LikedMovies);
+})
