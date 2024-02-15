@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import SearchResults from './Components/Home/Header/SearchResult';
+import SearchResults from './Pages/SearchResults';
 import LikedMovies from './Components/Home/Movie/LikedMovies';
 import Home from './Components/Home/Home';
 import Header from './Components/Home/Header/Header';

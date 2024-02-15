@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import FilmDate from '../Movie/FilmDate';
-import FilmTitle from '../Movie/FilmTitle';
-import FilmImages from '../Movie/FilmImages';
-import VoteAverage from '../Movie/FilmVote';
-import HeartIcon from '../../Icon/HeartIcon';
-import Loading from '../Movie/Loading';
-import Pagination from '../../Pagination/Pagination';
+import FilmDate from '../Components/Home/Movie/FilmDate';
+import FilmTitle from '../Components/Home/Movie/FilmTitle';
+import FilmImages from '../Components/Home/Movie/FilmImages';
+import VoteAverage from '../Components/Home/Movie/FilmVote';
+import HeartIcon from '../Components/Icon/HeartIcon';
+import Loading from '../Components/Home/Movie/Loading'
+import Pagination from '../Components/Pagination/Pagination'
 import { Link } from 'react-router-dom';
-import useMovieStore from '../../../Store/useMovieStore';
+import useMovieStore from '../Store/useMovieStore';
 
 function SearchResults() {
     const [movies, setMovies] = useState([]);
