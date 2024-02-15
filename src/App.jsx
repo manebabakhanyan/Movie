@@ -13,13 +13,13 @@ import RegisterPage from './Pages/RegisterPage';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('submit'));
 
-  const handleRegistrationSuccess = () => {
+  function registration() {
     setIsLoggedIn(true);
   };
 
   return (
     <>
-      {!isLoggedIn && <RegisterPage onRegistrationSuccess={handleRegistrationSuccess} />}
+      {!isLoggedIn && <RegisterPage registration={registration} />}
 
       {isLoggedIn && (
         <div>

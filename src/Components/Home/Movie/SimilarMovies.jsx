@@ -9,7 +9,7 @@ import Backward from '../../Slider/Backward';
 import { Link } from 'react-router-dom';
 import useMovieStore from '../../../Store/useMovieStore';
 
-function SimilarMovies({ selectedMovie }) {
+export default function SimilarMovies({ selectedMovie }) {
     const [similarMovies, setSimilarMovies] = useState([]);
     const [startIndex, setStartIndex] = useState(0);
     const selectMovie = useMovieStore((state) => state.selectMovie);
@@ -18,8 +18,8 @@ function SimilarMovies({ selectedMovie }) {
         const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${selectedMovie.title}`)
             .then(response => response.json())
-            .then(data => {
-                const filteredMovies = data.results.filter(movie => movie.id !== selectedMovie.id);
+            .then(res => {
+                const filteredMovies = res.results.filter(movie => movie.id !== selectedMovie.id);
                 const randomMovies = getRandomMovies(filteredMovies);
                 setSimilarMovies(randomMovies);
             })
@@ -37,9 +37,9 @@ function SimilarMovies({ selectedMovie }) {
         setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
     }, []);
 
-    function getRandomMovies(array) {
+    function getRandomMovies(arr) {
         const movies = [];
-        const changed = [...array];
+        const changed = [...arr];
 
         for (let i = 0; changed.length > 0; i++) {
             const randomIndex = Math.floor(Math.random() * changed.length);
@@ -78,5 +78,3 @@ function SimilarMovies({ selectedMovie }) {
         </div>
     );
 }
-
-export default SimilarMovies;

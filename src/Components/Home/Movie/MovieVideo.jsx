@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
 
-const VideoComponent = ({ movieId }) => {
+export default memo(function VideoComponent({ movieId }) {
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
-        const fetchVideos = () => {
+        const videos = () => {
             fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API}`)
                 .then(response => response.json())
                 .then(data => {
@@ -18,7 +18,7 @@ const VideoComponent = ({ movieId }) => {
                 })
         };
 
-        fetchVideos();
+        videos();
     }, [movieId]);
 
     return (
@@ -33,6 +33,4 @@ const VideoComponent = ({ movieId }) => {
             </div>
         </div>
     );
-};
-
-export default memo(VideoComponent);
+})
