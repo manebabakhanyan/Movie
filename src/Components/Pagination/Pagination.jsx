@@ -20,11 +20,6 @@ export default memo(function Pagination() {
 
     return (
         <div>
-            <ul className='flex'>
-                {getDataForPage().map((item, index) => (
-                    <div key={index}>{item}</div>
-                ))}
-            </ul>
             <div>
                 <ReactPaginate
                     pageCount={pageCount}

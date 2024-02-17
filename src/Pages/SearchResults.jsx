@@ -4,7 +4,7 @@ import FilmTitle from '../Components/Home/Movie/FilmTitle';
 import FilmImages from '../Components/Home/Movie/FilmImages';
 import VoteAverage from '../Components/Home/Movie/FilmVote';
 import HeartIcon from '../Components/Icon/HeartIcon';
-import Loading from '../Components/Home/Movie/Loading'
+import Loader from '../../src/Components/Home/Movie/Loading/loading.gif'
 import Pagination from '../Components/Pagination/Pagination'
 import { Link } from 'react-router-dom';
 import useMovieStore from '../Store/useMovieStore';
@@ -19,18 +19,13 @@ function SearchResults() {
         const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
         const searchParams = new URLSearchParams(location.search);
         const search = searchParams.get('query');
-
-        const timer = setTimeout(() => {
-            setLoading(true);
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${search}`)
-                .then(response => response.json())
-                .then(data => {
-                    setMovies(data.results);
-                    setLoading(false);
-                    setSearchValue(search);
-                })
-        }, 2000);
-        return () => clearTimeout(timer);
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${search}`)
+            .then(response => response.json())
+            .then(data => {
+                setMovies(data.results);
+                setLoading(false);
+                setSearchValue(search);
+            })
     }, [location.search]);
 
     function handleMovieClick(movie) {
@@ -41,7 +36,9 @@ function SearchResults() {
         <div>
             {searchValue && <h1 className="text-[30px] font-bold mt-[20px] text-center">{searchValue}</h1>}
             {loading ? (
-                <Loading />
+                <div className='flex justify-center h-[54.7vh] items-center'>
+                    <img src={Loader} alt="loading" className='w-[50px]' />
+                </div>
             ) : (
                 <div className='flex flex-wrap pl-[140px] pr-[180px] justify-between'>
                     {movies.length > 0 ? (
@@ -71,3 +68,5 @@ function SearchResults() {
 }
 
 export default SearchResults;
+
+
