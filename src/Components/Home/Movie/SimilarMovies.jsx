@@ -18,8 +18,8 @@ export default function SimilarMovies({ selectedMovie, movieId }) {
         const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
         let query = selectedMovie.title;
         if (selectedMovie.title.split(' ').length > 1) {
-            const firstWords = selectedMovie.title.split(' ').slice(0, 3).join(' ');
-            query = firstWords;
+            const words = selectedMovie.title.split(' ').slice(0, 3).join(' ');
+            query = words;
         }
 
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${query}`)
