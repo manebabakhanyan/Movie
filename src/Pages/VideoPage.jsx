@@ -1,4 +1,5 @@
 import React from 'react';
+import DeleteFavouriteFilms from '../Components/Home/Movie/DeleteFavouriteFilms';
 
 const VideoModal = ({ video, onClose }) => {
     return (
@@ -13,7 +14,9 @@ const VideoModal = ({ video, onClose }) => {
                     ></iframe>
                 </div>
             </div>
-            <button className="absolute top-4 right-4 text-white text-2xl" onClick={onClose}>&times;</button>
+            <button className="absolute top-4 right-4 text-white text-2xl" onClick={onClose}>
+                <DeleteFavouriteFilms />
+            </button>
         </div>
     );
 };

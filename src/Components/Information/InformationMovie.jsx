@@ -7,12 +7,16 @@ import VoteAverage from '../Home/Movie/FilmVote';
 import FilmActors from '../Home/Movie/FilmActors';
 import VideoComponent from '../Home/Movie/MovieVideo';
 import { memo } from 'react';
+
 export default memo(function MovieDetails() {
     const selectedMovie = useMovieStore((state) => state.selectedMovie);
 
+    if (!selectedMovie) {
+        return null
+    }
+
     return (
         <div>
-
             <div>
                 <div className="flex">
                     <div className="ml-[50px] md800:h-[300px]">
@@ -35,10 +39,8 @@ export default memo(function MovieDetails() {
                         </div>
                     </div>
                 </div>
-                <VideoComponent movieId={selectedMovie.id} />
+                {selectedMovie.id && <VideoComponent movieId={selectedMovie.id} />}
             </div>
-
         </div>
     );
-})
-
+});
