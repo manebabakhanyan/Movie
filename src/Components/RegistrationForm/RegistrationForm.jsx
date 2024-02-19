@@ -13,7 +13,7 @@ export default function RegisterPage() {
     const handleFormSubmit = (login, password) => {
         const log = /^[^@\s\t\r\n]+@[^@\s\t\r\n]+\.[^@\s\t\r\n]/;
         const pas = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&*-]).{8,}$/;
-        if (login.match(log) && password.match(pas)) {
+        if (login.includes(log) && password.includes(pas)) {
             localStorage.setItem('login', login);
             localStorage.setItem('password', password);
             setSubmit(true);
@@ -30,7 +30,7 @@ export default function RegisterPage() {
 
     return (
         <div>
-            <div className="bg-darkGray h-[100vh]">
+            <div className="bg-darkGray h-[30vh]">
                 <div className="pl-[500px] pr-[500px] pt-[170px]">
                     <fieldset className='border border-white pb-[60px] pt-[60px] shadow-xl shadow-white bg-gray'>
                         <legend className='ml-[90px] text-white text-[20px] font-bold'>Log In</legend>
