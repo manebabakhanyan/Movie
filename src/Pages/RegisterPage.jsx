@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LoginForm from '../Components/RegistrationForm/Form'
 import { useMemo } from 'react';
+
 export default function RegisterPage() {
     const [submit, setSubmit] = useState(false);
 
@@ -18,8 +19,10 @@ export default function RegisterPage() {
             localStorage.setItem('password', password);
             setSubmit(true);
             localStorage.setItem('submit', 'true');
+            location.href = '/';
         }
     };
+
     const formSubmit = useMemo(() => {
         return <LoginForm onSubmit={handleFormSubmit} />;
     }, []);
