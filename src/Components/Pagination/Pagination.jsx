@@ -1,21 +1,14 @@
-import React, { useState, memo } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import '../Pagination/pagination.css'
 
-export default memo(function Pagination() {
+export default function Pagination({ totalMovies, moviesPerPage, onPageChange }) {
     const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 2;
-    const pageCount = 4
-
+    const pageCount = Math.ceil(totalMovies / moviesPerPage);
 
     const handlePageChange = ({ selected }) => {
         setCurrentPage(selected);
-    };
-    const getDataForPage = () => {
-        const startIndex = currentPage * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        const data = Array.from({ length: 100 }, (_, index) => `Item ${index + 1}`);
-        return data.slice(startIndex, endIndex);
+        onPageChange(selected);
     };
 
     return (
@@ -35,4 +28,4 @@ export default memo(function Pagination() {
             </div>
         </div>
     );
-})
+}

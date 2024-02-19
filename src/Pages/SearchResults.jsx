@@ -4,8 +4,8 @@ import FilmTitle from '../Components/Home/Movie/FilmTitle';
 import FilmImages from '../Components/Home/Movie/FilmImages';
 import VoteAverage from '../Components/Home/Movie/FilmVote';
 import HeartIcon from '../Components/Icon/HeartIcon';
-import Loader from '../../src/Components/Home/Movie/Loading/loading.gif'
-import Pagination from '../Components/Pagination/Pagination'
+import Loader from '../../src/Components/Home/Movie/Loading/loading.gif';
+import Pagination from '../Components/Pagination/Pagination';
 import { Link } from 'react-router-dom';
 import useMovieStore from '../Store/useMovieStore';
 
@@ -13,6 +13,8 @@ function SearchResults() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchValue, setSearchValue] = useState('');
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 4; 
     const selectMovie = useMovieStore((state) => state.selectMovie);
 
     useEffect(() => {
@@ -25,10 +27,20 @@ function SearchResults() {
                 setMovies(data.results);
                 setLoading(false);
                 setSearchValue(search);
-            })
+            });
     }, [location.search]);
 
-    function handleMovieClick(movie) {
+    const totalMovies = movies.length;
+
+    const handlePageChange = (selected) => {
+        setCurrentPage(selected);
+    };
+
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const displayedMovies = movies.slice(startIndex, endIndex);
+
+    const handleMovieClick = (movie) => {
         selectMovie(movie);
     };
 
@@ -41,8 +53,8 @@ function SearchResults() {
                 </div>
             ) : (
                 <div className='flex flex-wrap pl-[140px] pr-[180px] justify-between'>
-                    {movies.length > 0 ? (
-                        movies.map(movie => (
+                    {displayedMovies.length > 0 ? (
+                        displayedMovies.map(movie => (
                             <div key={movie.id} className='border border-yellow rounded-[20px] p-[20px] mt-[30px]'>
                                 <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
                                     <FilmImages movie={movie} />
@@ -57,10 +69,16 @@ function SearchResults() {
                         ))
                     ) : (
                         <div className='flex w-[100vw] justify-center h-[54.7vh] items-center'>
-                            <p className="font-bold text-[40px]">The film was not found</p>
+                            <p className="font-bold text-[40px]">No movies found</p>
                         </div>
                     )}
-                    {movies.length > 0 && <Pagination />}
+                    {totalMovies > itemsPerPage && (
+                        <Pagination
+                            totalMovies={totalMovies}
+                            moviesPerPage={itemsPerPage}
+                            onPageChange={handlePageChange}
+                        />
+                    )}
                 </div>
             )}
         </div>
@@ -68,5 +86,3 @@ function SearchResults() {
 }
 
 export default SearchResults;
-
-
