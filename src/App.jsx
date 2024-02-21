@@ -9,6 +9,7 @@ import MovieDetails from './Components/Information/InformationMovie';
 import Footer from './Components/Home/Footer/Footer';
 import SimilarFilms from './Components/Home/Movie/SimilarFilms';
 import RegisterPage from './Pages/RegisterPage';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('submit'));
 
@@ -35,9 +36,9 @@ function App() {
             <Route path="/favourite" element={<LikedMovies />} />
             <Route path='/movie/:id' element={<SimilarFilms />} />
           </Routes>
+          <Footer />
         </div>
       )}
-      {isLoggedIn && <Footer />}
     </>
   );
 }

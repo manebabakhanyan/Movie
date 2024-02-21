@@ -5,7 +5,8 @@ import FilmImages from '../Components/Home/Movie/FilmImages';
 import FilmDate from '../Components/Home/Movie/FilmDate';
 import VoteAverage from '../Components/Home/Movie/FilmVote';
 import DeleteFavouriteFilms from '../Components/Home/Movie/DeleteFavouriteFilms';
-
+import { Link } from 'react-router-dom';
+import useMovieStore from '../Store/useMovieStore';
 export default memo(function LikedMovies() {
     const { favouriteFilms, deleteFilm } = useFavouriteFilms();
 
@@ -16,6 +17,11 @@ export default memo(function LikedMovies() {
     function handleDeleteFilm(filmId) {
         deleteFilm(filmId);
     };
+    const selectMovie = useMovieStore((state) => state.selectMovie);
+
+    function handleMovieClick(movie) {
+        selectMovie(movie);
+    };
 
     return (
         <div>
@@ -24,8 +30,10 @@ export default memo(function LikedMovies() {
                     <div key={movie.id} className='border border-yellow rounded-[20px] mt-[50px]'>
                         <DeleteFavouriteFilms handleClick={() => handleDeleteFilm(movie.id)} />
                         <div className='p-[20px]'>
-                            <FilmImages movie={movie} />
-                            <FilmTitle movie={movie} />
+                            <Link to={`/movie/${movie.id}`} onClick={() => handleMovieClick(movie)}>
+                                <FilmImages movie={movie} />
+                                <FilmTitle movie={movie} />
+                            </Link>
                             <div className='flex justify-between'>
                                 <FilmDate movie={movie} />
                                 <VoteAverage movie={movie} />

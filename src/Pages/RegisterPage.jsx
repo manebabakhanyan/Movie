@@ -33,9 +33,9 @@ export default function RegisterPage() {
 
     return (
         <div>
-            <div className="bg-darkGray h-[100vh]">
+            <div className="bg-gradient-to-br from-viaGray via-viaGray to-viaGray h-[100vh]">
                 <div className="pl-[500px] pr-[500px] pt-[170px]">
-                    <fieldset className='border border-white pb-[60px] pt-[60px] shadow-xl shadow-white bg-gray'>
+                    <fieldset className='border-[3px] border-yellow pb-[60px] pt-[60px] bg-gradient-to-br from-viaGray via-fromGray to-viaGray'>
                         <legend className='ml-[90px] text-white text-[20px] font-bold'>Log In</legend>
                         {formSubmit}
                     </fieldset>
