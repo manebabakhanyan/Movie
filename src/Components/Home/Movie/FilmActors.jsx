@@ -3,8 +3,10 @@ import ActorImage from './ActorImage';
 import Forward from '../../Slider/Forward';
 import Backward from '../../Slider/Backward';
 import { memo } from 'react';
+import Loader from '../Movie/Loading/loading.gif'
 export default memo(function FilmActors({ movie }) {
     const [actorImages, setActorImages] = useState([]);
+    const [loading, setLoading] = useState(true)
     const [startIndex, setStartIndex] = useState(0);
     const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
 
@@ -27,6 +29,7 @@ export default memo(function FilmActors({ movie }) {
         };
 
         fetchActorImages();
+        setLoading(false)
     }, [movie, API]);
 
     const handleNext = useCallback(() => {
@@ -39,13 +42,17 @@ export default memo(function FilmActors({ movie }) {
 
     return (
         <div>
-            <div className='flex justify-between gap-[10px] pb-[20px]'>
-                <Forward onClick={handlePrev} />
-                {actorImages.slice(startIndex, startIndex + 5).map((imagePath, index) => (
-                    <ActorImage key={index} imagePath={imagePath} />
-                ))}
-                <Backward onClick={handleNext} />
-            </div>
-        </div>
+            {loading ? (<div className='flex justify-center h-[54.7vh] items-center'>
+                <img src={Loader} alt="loading" className='w-[50px]' />
+            </div>) : (
+                < div className='flex justify-between gap-[10px] pb-[20px]'>
+                    <Forward onClick={handlePrev} />
+                    {actorImages.slice(startIndex, startIndex + 5).map((imagePath, index) => (
+                        <ActorImage key={index} imagePath={imagePath} />
+                    ))}
+                    <Backward onClick={handleNext} />
+                </div>
+            )}
+        </div >
     );
 })

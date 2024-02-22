@@ -6,7 +6,7 @@ import VoteAverage from '../Components/Home/Movie/FilmVote';
 import HeartIcon from '../Components/Icon/HeartIcon';
 import Loader from '../../src/Components/Home/Movie/Loading/loading.gif';
 import Pagination from '../Components/Pagination/Pagination';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useMovieStore from '../Store/useMovieStore';
 
 function SearchResults() {
@@ -16,7 +16,6 @@ function SearchResults() {
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 4;
     const selectMovie = useMovieStore((state) => state.selectMovie);
-    const location = useLocation();
 
     useEffect(() => {
         const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
