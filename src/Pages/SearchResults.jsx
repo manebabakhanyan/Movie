@@ -71,12 +71,13 @@ function SearchResults() {
                             <p className="font-bold text-[40px]">No movies found</p>
                         </div>
                     )}
-                    {totalMovies > itemsPerPage && (
+                    {totalMovies > itemsPerPage && (<div className=''>
                         <Pagination
                             totalMovies={totalMovies}
                             moviesPerPage={itemsPerPage}
                             onPageChange={handlePageChange}
                         />
+                    </div>
                     )}
                 </div>
             )}

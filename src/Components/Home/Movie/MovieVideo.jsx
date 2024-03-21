@@ -47,7 +47,9 @@ export default memo(function VideoComponent({ movieId }) {
                     <div className='flex justify-between ml-[50px] mr-[30px] pt-[25px] pb-[80px]'>
                         {videos.slice(0, 4).map(video => (
                             <div key={video.id} onClick={() => openModal(video)}>
-                                <img src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`} alt={video.name} className='rounded-[20px] w-[280px]' />
+                                <div>
+                                    <img src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`} alt={video.name} className='rounded-[20px] w-[280px]' />
+                                </div>
                             </div>
                         ))}
                     </div>

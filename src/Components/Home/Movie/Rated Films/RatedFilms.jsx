@@ -58,7 +58,7 @@ export default memo(function RatedFilms() {
                 </div>
             ) : (
                 <div>
-                    <h1 className='text-center font-bold text-[35px] py-[50px] '>Most popular films</h1>
+                    <h1 className='text-center font-bold text-[35px] py-[50px]'>Most rated films</h1>
                     <div className='flex justify-between px-[100px] pb-[20px]'>
                         <div className='flex'>
                             <Forward onClick={handlePrev} />
@@ -86,5 +86,4 @@ export default memo(function RatedFilms() {
             )}
         </div >
     );
-
 })

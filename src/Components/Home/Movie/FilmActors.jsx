@@ -11,7 +11,7 @@ export default memo(function FilmActors({ movie }) {
     const API = 'f6fe3a0d481ebf7e606a5a5a6541dd26';
 
     useEffect(() => {
-        const fetchActorImages = () => {
+        function fetchActorImages()  {
             if (movie && movie.id) {
                 fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${API}`)
                     .then(response => {
@@ -20,16 +20,18 @@ export default memo(function FilmActors({ movie }) {
                     .then(data => {
                         const images = data.cast.map(actor => {
                             if (actor.profile_path) {
-                                return `https://image.tmdb.org/t/p/w500/${actor.profile_path}`;
+                                return (
+                                    `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+                                )
                             }
                         });
+                        setLoading(false)
                         setActorImages(images.filter(image => image !== null));
                     })
             }
         };
 
         fetchActorImages();
-        setLoading(false)
     }, [movie, API]);
 
     const handleNext = useCallback(() => {
@@ -42,10 +44,11 @@ export default memo(function FilmActors({ movie }) {
 
     return (
         <div>
-            {loading ? (<div className='flex justify-center h-[54.7vh] items-center'>
-                <img src={Loader} alt="loading" className='w-[50px]' />
-            </div>) : (
-                < div className='flex justify-between gap-[10px] pb-[20px]'>
+            {loading ? (
+                <div className='flex justify-center h-[54.7vh] items-center'>
+                    <img src={Loader} alt="loading" className='w-[50px]' />
+                </div>) : (
+                <div className='flex justify-between gap-[10px] pb-[20px]'>
                     <Forward onClick={handlePrev} />
                     {actorImages.slice(startIndex, startIndex + 5).map((imagePath, index) => (
                         <ActorImage key={index} imagePath={imagePath} />
